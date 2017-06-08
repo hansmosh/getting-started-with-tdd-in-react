@@ -36,21 +36,32 @@ export class InputArea extends Component {
     };
     this.setText = this.setText.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   setText(event) {
     this.setState({text: event.target.value});
   }
 
-  handleClick() {
+  submitText() {
     this.props.onSubmit(this.state.text);
     this.setState({text: ''});
+  }
+
+  handleClick() {
+    this.submitText()
+  }
+
+  handleKeyPress(event) {
+    if (event.key == 'Enter') {
+      this.submitText()
+    }
   }
 
   render() {
     return (
       <div>
-        <input value={this.state.text} onChange={this.setText}/>
+        <input value={this.state.text} onChange={this.setText} onKeyPress={this.handleKeyPress}/>
         <button onClick={this.handleClick}>Add</button>
       </div>
     );

@@ -68,6 +68,16 @@ describe('InputArea', () => {
     expect(addItemSpy.calledWith('Casey')).to.equal(true);
   });
 
+  it('should call onSubmit when Enter is is pressed', () => {
+    const addItemSpy = spy();
+    const wrapper = shallow(<InputArea onSubmit={addItemSpy}/>);
+    wrapper.setState({text: 'Casey'});
+    const input = wrapper.find('input');
+    input.simulate('keyPress', {key: 'Enter'});
+    expect(addItemSpy.calledOnce).to.equal(true);
+    expect(addItemSpy.calledWith('Casey')).to.equal(true);
+  });
+
   it('should clear text when Add is clicked', () => {
     const addItemSpy = spy();
     const wrapper = shallow(<InputArea onSubmit={addItemSpy}/>);
