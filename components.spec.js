@@ -68,6 +68,15 @@ describe('InputArea', () => {
     expect(addItemSpy.calledWith('Casey')).to.equal(true);
   });
 
+  it('should clear text when Add is clicked', () => {
+    const addItemSpy = spy();
+    const wrapper = shallow(<InputArea onSubmit={addItemSpy}/>);
+    wrapper.setState({text: 'Casey'});
+    const addButton = wrapper.find('button');
+    addButton.simulate('click');
+    expect(wrapper.state('text')).to.equal('');
+  });
+
 });
 
 describe('BeerList', () => {
