@@ -2,12 +2,19 @@ Getting Started with TDD in React
 
 https://semaphoreci.com/community/tutorials/getting-started-with-tdd-in-react
 
-Run server with:
+Install dependencies:
 ```
-quik
+npm install
+npm install -g quik
+npm install -g mocha
 ```
 
-Run tests with:
+Run the tests:
 ```
-mocha --require setup.js *.spec.js
+npm test
+```
+
+Run the app:
+```
+quik
 ```
