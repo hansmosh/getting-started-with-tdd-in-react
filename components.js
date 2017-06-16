@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import GoogleLogin from 'react-google-login';
+import AWS from 'aws-sdk/dist/aws-sdk-react-native'
 
 export class BeerListContainer extends Component {
 
@@ -16,15 +18,35 @@ export class BeerListContainer extends Component {
     })
   }
 
+  googleSignIn(googleUser) {
+    var id_token = googleUser.getAuthResponse().id_token;
+    AWS.config.update({
+      region: 'us-east-1',
+      credentials: new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: "us-east-1:9ae5ac17-aac4-4ef3-9967-c254eddb8e0a",
+        Logins: {
+          'accounts.google.com': id_token
+        }
+      })
+    })
+    });
+  }
+
   render() {
     return (
       <div>
+        <GoogleLogin
+          clientId="348539732529-cgdpd7b35tnmf5nbha97s2qrlo2lnvtc.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={this.googleSignIn}
+          onFailure={this.googleSignIn}
+        />
         <InputArea onSubmit={this.addItem}/>
         <BeerList items={this.state.beers}/>
       </div>
     );
   }
-
+  
 }
 
 export class InputArea extends Component {

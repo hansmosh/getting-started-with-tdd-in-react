@@ -1,9 +1,13 @@
 {
-  "name": "reach-tdd-demo",
+  "name": "crusoe-app",
   "main": "index.js",
 	"scripts": {
+    "start": "quik",
     "test": "mocha --require setup.js *.spec.js",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "init-s3": "./sspa create_bucket crusoe.hansmosh.com",
+    "init-cognito": "./sspa create_pool conf/cognito/identity_pools/crusoe",
+    "deploy": "./sspa deploy_bucket crusoe.hansmosh.com"
   },
   "devDependencies": {
     "babel-core": "^6.8.0",
@@ -16,6 +20,8 @@
   "dependencies": {
     "react": "^15.0.2",
     "react-addons-test-utils": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react-dom": "^15.0.2",
+    "react-google-login": "^2.9.2",
+    "aws-sdk": "^2.71.0"
   }
 }

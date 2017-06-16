@@ -1,0 +1,8 @@
+{
+    "IdentityPoolId": "us-east-1:9ae5ac17-aac4-4ef3-9967-c254eddb8e0a",
+    "SupportedLoginProviders": {
+        "accounts.google.com": "348539732529-cgdpd7b35tnmf5nbha97s2qrlo2lnvtc.apps.googleusercontent.com"
+    },
+    "AllowUnauthenticatedIdentities": false,
+    "IdentityPoolName": "crusoe"
+}

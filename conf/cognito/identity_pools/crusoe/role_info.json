@@ -1,0 +1,30 @@
+{
+    "Role": {
+        "RoleId": "AROAISFP3GOLNPFLLILF4",
+        "Path": "/",
+        "RoleName": "crusoe_cognito_authenticated",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Principal": {
+                        "Federated": "cognito-identity.amazonaws.com"
+                    },
+                    "Sid": "",
+                    "Effect": "Allow",
+                    "Condition": {
+                        "StringEquals": {
+                            "cognito-identity.amazonaws.com:aud": "us-east-1:9ae5ac17-aac4-4ef3-9967-c254eddb8e0a"
+                        },
+                        "ForAnyValue:StringLike": {
+                            "cognito-identity.amazonaws.com:amr": "authenticated"
+                        }
+                    },
+                    "Action": "sts:AssumeRoleWithWebIdentity"
+                }
+            ]
+        },
+        "Arn": "arn:aws:iam::801914131340:role/crusoe_cognito_authenticated",
+        "CreateDate": "2017-06-16T05:55:54.054Z"
+    }
+}
