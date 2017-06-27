@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BeerListContainer} from './components';
+import {App} from './components';
 
 ReactDOM.render(
-  <BeerListContainer/>,
+  <App/>,
   document.querySelector('#root'))

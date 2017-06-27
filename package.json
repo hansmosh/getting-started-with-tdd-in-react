@@ -1,7 +1,7 @@
 {
   "name": "crusoe-app",
   "main": "index.js",
-	"scripts": {
+  "scripts": {
     "start": "quik",
     "test": "mocha --require setup.js *.spec.js",
     "test:watch": "npm run test -- --watch",
@@ -18,10 +18,11 @@
     "sinon": "^1.17.4"
   },
   "dependencies": {
+    "aws-sdk": "^2.71.0",
+    "promise": "^8.0.0",
     "react": "^15.0.2",
     "react-addons-test-utils": "^15.0.2",
     "react-dom": "^15.0.2",
-    "react-google-login": "^2.9.2",
-    "aws-sdk": "^2.71.0"
+    "react-google-login": "^2.9.2"
   }
 }
