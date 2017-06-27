@@ -8,7 +8,7 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      identity: null,
+      identity: {}
     };
     this.googleSignIn = this.googleSignIn.bind(this);
   }
@@ -62,11 +62,24 @@ export class App extends Component {
           onSuccess={this.googleSignIn}
           onFailure={this.googleSignInFailure}
         />
+        <Profile email={this.state.identity.email}/>
         <BeerListContainer />
       </div>
     );
   }
   
+}
+
+export class Profile extends Component {
+
+  render() {
+    return this.props.email ? (
+      <div>
+        <div className='email'>{this.props.email}</div>
+      </div>)
+    : null;
+  }
+
 }
 
 export class BeerListContainer extends Component {

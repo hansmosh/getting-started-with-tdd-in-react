@@ -1,9 +1,37 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
-import { spy } from 'sinon';
+import { mock, spy, stub } from 'sinon';
+import { App, Profile } from './components';
 import { BeerListContainer } from './components';
 import { InputArea, BeerList } from './components';
+
+describe('App', () => {
+
+  it('should render BeerListContainer', () => {
+    const wrapper = shallow(<App/>);
+    expect(wrapper.containsAllMatchingElements([
+      <Profile />,
+      <BeerListContainer />
+    ])).to.equal(true);
+  });
+
+});
+
+describe('Profile', () => {
+
+  it('shows the users email address when they log in', () => {
+    const email = "foo@bar.com";
+    const wrapper = shallow(<Profile email={email}/>);
+    expect(wrapper.find('.email').text()).to.equal("foo@bar.com");
+  });
+
+  it('shows no email when the user is not logged in yet', () => {
+    const wrapper = shallow(<Profile/>);
+    expect(wrapper.find('.email')).to.have.length(0);
+  });
+
+});
 
 describe('BeerListContainer', () => {
 
